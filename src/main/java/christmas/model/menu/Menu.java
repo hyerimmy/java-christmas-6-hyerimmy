@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.menu;
 
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, MenuType.APPETIZER),
@@ -14,13 +14,25 @@ public enum Menu {
     RED_WINE("레드와인", 60_000, MenuType.DRINK),
     CHAMPAGNE("샴페인", 25_000, MenuType.DRINK);
 
-    private String name;
-    private int price;
-    private MenuType type;
+    private final String name;
+    private final int price;
+    private final MenuType type;
 
     Menu(String name, int price, MenuType type) {
         this.name = name;
         this.price = price;
         this.type = type;
+    }
+
+    public boolean isMain(){
+        return type.equals(MenuType.MAIN);
+    }
+
+    public boolean isDessert(){
+        return type.equals(MenuType.DESSERT);
+    }
+
+    public int getPrice(){
+        return price;
     }
 }
