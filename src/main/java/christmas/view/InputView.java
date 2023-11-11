@@ -6,7 +6,7 @@ import christmas.utils.Utils;
 import java.util.List;
 
 public class InputView {
-    public static int takeDateOfVisit() {
+    public static int inputDateOfVisit() {
         System.out.println(InputMessage.ENTER_DATE_OF_VISIT);
         return Utils.readNumber();
     }
