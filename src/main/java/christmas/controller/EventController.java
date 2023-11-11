@@ -9,11 +9,11 @@ public class EventController {
 
     public void run() {
         OutputView.printWelcomeMessage();
-        takeReservation();
+        takeOrder();
     }
 
-    private void takeReservation() {
-        InputView.inputReservationDate();
+    private void takeOrder() {
+        InputView.takeDateOfVisit();
         InputView.inputMenus();
     }
 }
