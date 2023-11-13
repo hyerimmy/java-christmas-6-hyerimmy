@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static christmas.constant.message.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
+import static christmas.exception.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
 
 
 public class Utils {

@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.constant.message.OutputMessage;
-import christmas.utils.Utils;
 
 public class OutputView {
 

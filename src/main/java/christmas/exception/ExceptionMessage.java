@@ -1,4 +1,4 @@
-package christmas.constant.message;
+package christmas.exception;
 
 public enum ExceptionMessage {
     NUMBER_FORMAT_EXCEPTION("숫자 형식이 아닙니다."),

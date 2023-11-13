@@ -4,7 +4,7 @@ import java.time.YearMonth;
 
 import static christmas.constant.SystemSetting.MONTH;
 import static christmas.constant.SystemSetting.YEAR;
-import static christmas.constant.message.ExceptionMessage.INVALID_DATE_EXCEPTION;
+import static christmas.exception.ExceptionMessage.INVALID_DATE_EXCEPTION;
 
 public class Validator {
     public static void validateDate(int day){
