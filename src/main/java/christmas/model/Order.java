@@ -14,6 +14,10 @@ public class Order {
         setMenu(orderData.split("-")[0]);
         setCount(orderData.split("-")[1]);
     }
+    public Order(Menu menu, int count) {
+        this.menu = menu;
+        this.count = count;
+    }
 
     public String getMenuName() {
         return menu.getName();

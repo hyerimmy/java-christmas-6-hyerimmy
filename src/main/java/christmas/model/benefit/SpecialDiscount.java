@@ -5,10 +5,15 @@ import christmas.model.Plan;
 import java.time.LocalDate;
 
 public class SpecialDiscount extends Benefit {
+    private static final SpecialDiscount instance = new SpecialDiscount();
     private final static int discountAmount = 1_000;
 
     public SpecialDiscount() {
         super("특별 할인");
+    }
+
+    protected static SpecialDiscount getInstance(){
+        return instance;
     }
 
     @Override

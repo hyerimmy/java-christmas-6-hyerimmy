@@ -1,11 +1,15 @@
 package christmas.controller;
 
+import christmas.model.Badge;
 import christmas.model.Order;
 import christmas.model.Plan;
-import christmas.utils.FormattedPrinter;
+import christmas.utils.Utils;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
+import java.util.List;
+
+import static christmas.constant.message.OutputMessage.EMPTY_RESULT;
 import static christmas.utils.FormattedPrinter.printlnExceptionWithReEnterMessage;
 
 public class EventController {
@@ -28,12 +32,14 @@ public class EventController {
     /* 이벤트 혜택 미리 보기 결과 출력 */
     private void showEventBenefitsPreview() {
         OutputView.printEventBenefitsPreviewMessage(plan.getDayOfVisit());
+        plan.calculateBenefitList();
+
         showOrderedMenu();
         showTotalAmountBeforeDiscount();
         showGiveawayMenu();
         showBenefitList();
         showTotalBenefitAmount();
-        showTotalAmountAfterDiscout();
+        showTotalAmountAfterDiscount();
         showEventBadge();
     }
 
@@ -69,37 +75,42 @@ public class EventController {
     /* 할인 전 총주문 금액 출력 */
     private void showTotalAmountBeforeDiscount() {
         OutputView.printTotalAmountBeforeDiscountHeader();
-        FormattedPrinter.printlnKorMoney(plan.getTotalAmount());
+        int totalAmount = plan.getTotalAmount();
+        System.out.println(Utils.getFormattedKorMoney(totalAmount));
         System.out.println();
     }
 
     /* 증정 메뉴 출력 */
     private void showGiveawayMenu() {
         OutputView.printGiveawayMenuHeader();
+        System.out.println(plan.getGiveawayResult());
         System.out.println();
-
-
     }
 
     /* 혜택 내역 출력 */
     private void showBenefitList() {
         OutputView.printBenefitListHeader();
+        List<String> benefitList = plan.getBenefitList();
+        String benefitResult = EMPTY_RESULT;
+        if(!benefitList.isEmpty())
+            benefitResult = String.join("\n", plan.getBenefitList());
+        System.out.println(benefitResult);
         System.out.println();
-
-
     }
 
     /* 총혜택 금액 출력 */
     private void showTotalBenefitAmount() {
         OutputView.printTotalBenefitAmountHeader();
+        int totalBenefitAmount = plan.getTotalBenefitAmount();
+        System.out.println(Utils.getFormattedKorDiscountMoney(totalBenefitAmount));
         System.out.println();
-
-
     }
 
     /* 할인 후 예상 결제 금액 */
-    private void showTotalAmountAfterDiscout() {
+    private void showTotalAmountAfterDiscount() {
         OutputView.printTotalAmountAfterDiscountHeader();
+        int totalAmountAfterDiscount = plan.getTotalAmountAfterDiscount();
+        System.out.println(Utils.getFormattedKorMoney(totalAmountAfterDiscount));
         System.out.println();
 
 
@@ -108,7 +119,12 @@ public class EventController {
     /* 12월 이벤트 배지 출력 */
     private void showEventBadge() {
         OutputView.printEventBadgeHeader();
-        System.out.println();
 
+        String resultBadgeName = Badge.getBadgeNameOf(plan.getTotalBenefitAmount());
+        if(resultBadgeName.isEmpty())
+            resultBadgeName = EMPTY_RESULT;
+        System.out.println(resultBadgeName);
+
+        System.out.println();
     }
 }

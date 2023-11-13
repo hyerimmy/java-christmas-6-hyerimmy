@@ -1,23 +1,20 @@
 package christmas.model.benefit;
 
+import christmas.model.Order;
 import christmas.model.Plan;
 import christmas.model.menu.Menu;
 
-import java.util.HashMap;
-
 public class GiveawayEvent extends Benefit {
-    private final static HashMap<Menu, Integer> giveawayMenus = new HashMap<>() {{
-        put(Menu.CHAMPAGNE, 1);
-    }};
+    private static final GiveawayEvent instance = new GiveawayEvent();
+    private final static Order giveaway = new Order(Menu.CHAMPAGNE, 1);
     private final static int amountCondition = 120_000;
 
-    public GiveawayEvent() {
+    private GiveawayEvent() {
         super("증정 이벤트");
     }
 
-    @Override
-    public String getTitle(){
-        return "d";
+    protected static GiveawayEvent getInstance(){
+        return instance;
     }
 
     @Override
@@ -27,12 +24,10 @@ public class GiveawayEvent extends Benefit {
 
     @Override
     public int getDiscountAmount(Plan plan) {
-        return giveawayMenus.values().stream()
-                .mapToInt(Integer::intValue)
-                .sum();
+        return giveaway.getAmount();
     }
 
-    public HashMap<Menu, Integer> getGiveawayMenus(Plan plan) {
-        return giveawayMenus;
+    public String getGivewayMenuAndCountString(Plan plan) {
+        return giveaway.getMenuAndCountString();
     }
 }

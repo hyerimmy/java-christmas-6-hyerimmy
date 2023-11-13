@@ -5,10 +5,15 @@ import christmas.model.Plan;
 import java.time.DayOfWeek;
 
 public class WeekdayDiscount extends Benefit {
+    private static final WeekdayDiscount instance = new WeekdayDiscount();
     private final static int discountAmountPerMenu = 2_023;
 
     public WeekdayDiscount() {
         super("평일 할인");
+    }
+
+    protected static WeekdayDiscount getInstance(){
+        return instance;
     }
 
     @Override

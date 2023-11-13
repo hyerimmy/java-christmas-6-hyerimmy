@@ -8,6 +8,7 @@ import static christmas.constant.SystemSetting.MONTH;
 import static christmas.constant.SystemSetting.YEAR;
 
 public class ChristmasDiscount extends Benefit {
+    private static final ChristmasDiscount instance = new ChristmasDiscount();
     private final static LocalDate startDate = LocalDate.of(YEAR, MONTH, 1);
     private final static LocalDate endDate = LocalDate.of(YEAR, MONTH, 25);
     private final static int defaultAmount = 1_000;
@@ -15,6 +16,10 @@ public class ChristmasDiscount extends Benefit {
 
     public ChristmasDiscount() {
         super("크리스마스 디데이 할인");
+    }
+
+    protected static ChristmasDiscount getInstance(){
+        return instance;
     }
 
     @Override

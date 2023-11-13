@@ -7,6 +7,7 @@ public class OutputMessage {
             = "안녕하세요! 우테코 식당 " + MONTH + "월 이벤트 플래너입니다.";
     public static final String EVENT_BENEFITS_PREVIEW_MESSAGE
             = MONTH + "월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
+    public static final String EMPTY_RESULT = "없음";
 
     /* Divider */
     public static final String CHRISTMAS_THEME_DIVIDER = "~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~";
