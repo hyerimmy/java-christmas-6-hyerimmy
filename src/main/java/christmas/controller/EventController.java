@@ -14,6 +14,6 @@ public class EventController {
 
     private void takeOrder() {
         InputView.takeDateOfVisit();
-        InputView.inputMenus();
+        InputView.takeMenus();
     }
 }

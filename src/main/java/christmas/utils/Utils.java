@@ -1,11 +1,10 @@
 package christmas.utils;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.constant.message.ExceptionMessage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static christmas.constant.message.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
 
 
 public class Utils {
@@ -13,7 +12,7 @@ public class Utils {
         try{
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e){
-            System.out.println(ExceptionMessage.NUMBER_FORMAT_EXCEPTION);
+            System.out.println(NUMBER_FORMAT_EXCEPTION.getMessage());
             return readNumber();
         }
     }
@@ -24,7 +23,7 @@ public class Utils {
             return List.of(inputString.split(","));
         } catch (NumberFormatException e){
             //TODO 예외처리 필요
-            System.out.println(ExceptionMessage.NUMBER_FORMAT_EXCEPTION);
+            System.out.println(NUMBER_FORMAT_EXCEPTION);
             return readStringList();
         }
     }
