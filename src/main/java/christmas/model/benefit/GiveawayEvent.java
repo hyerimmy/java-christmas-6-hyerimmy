@@ -1,6 +1,6 @@
 package christmas.model.benefit;
 
-import christmas.model.Order;
+import christmas.model.Plan;
 import christmas.model.menu.Menu;
 
 import java.util.HashMap;
@@ -21,18 +21,18 @@ public class GiveawayEvent extends Benefit {
     }
 
     @Override
-    public boolean applyToDiscount(Order order) {
-        return (order.getTotalAmount() >= amountCondition);
+    public boolean applyToDiscount(Plan plan) {
+        return (plan.getTotalAmount() >= amountCondition);
     }
 
     @Override
-    public int getDiscountAmount(Order order) {
+    public int getDiscountAmount(Plan plan) {
         return giveawayMenus.values().stream()
                 .mapToInt(Integer::intValue)
                 .sum();
     }
 
-    public HashMap<Menu, Integer> getGiveawayMenus(Order order) {
+    public HashMap<Menu, Integer> getGiveawayMenus(Plan plan) {
         return giveawayMenus;
     }
 }

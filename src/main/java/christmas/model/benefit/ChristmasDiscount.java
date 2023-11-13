@@ -1,6 +1,6 @@
 package christmas.model.benefit;
 
-import christmas.model.Order;
+import christmas.model.Plan;
 
 import java.time.LocalDate;
 
@@ -18,14 +18,14 @@ public class ChristmasDiscount extends Benefit {
     }
 
     @Override
-    public int getDiscountAmount(Order order){
-        LocalDate dateOfVisit = order.getDateOfVisit();
+    public int getDiscountAmount(Plan plan){
+        LocalDate dateOfVisit = plan.getDateOfVisit();
         return (defaultAmount + (dateOfVisit.getDayOfMonth()-1) * unitAmount);
     }
 
     @Override
-    public boolean applyToDiscount(Order order){
-        LocalDate dateOfVisit = order.getDateOfVisit();
+    public boolean applyToDiscount(Plan plan){
+        LocalDate dateOfVisit = plan.getDateOfVisit();
         return (!dateOfVisit.isBefore(startDate) && !dateOfVisit.isAfter(endDate));
     }
 }

@@ -1,6 +1,6 @@
 package christmas.model.benefit;
 
-import christmas.model.Order;
+import christmas.model.Plan;
 
 import java.time.DayOfWeek;
 
@@ -12,15 +12,15 @@ public class WeekendDiscount extends Benefit {
     }
 
     @Override
-    public boolean applyToDiscount(Order order) {
-        DayOfWeek dayOfVisit = order.getDateOfVisit().getDayOfWeek();
+    public boolean applyToDiscount(Plan plan) {
+        DayOfWeek dayOfVisit = plan.getDateOfVisit().getDayOfWeek();
         return (dayOfVisit.equals(DayOfWeek.FRIDAY)
                 || dayOfVisit.equals(DayOfWeek.SATURDAY)
         );
     }
 
     @Override
-    public int getDiscountAmount(Order order) {
-        return calculateDiscountPerMenu(order.getMainMenus(), discountAmountPerMenu);
+    public int getDiscountAmount(Plan plan) {
+        return calculateDiscountPerMenu(plan.getMainMenus(), discountAmountPerMenu);
     }
 }

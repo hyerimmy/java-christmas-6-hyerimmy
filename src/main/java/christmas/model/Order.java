@@ -1,40 +1,58 @@
 package christmas.model;
 
 import christmas.model.menu.Menu;
+import christmas.utils.Utils;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
+import static christmas.exception.ExceptionMessage.INVALID_ORDER_EXCEPTION;
 
 public class Order {
-    private final HashMap<Menu, Integer> menus;
-    private final LocalDate dateOfVisit;
+    private Menu menu;
+    private int count;
 
-    Order(HashMap<Menu, Integer> menus, LocalDate dateOfVisit) {
-        this.menus = menus;
-        this.dateOfVisit = dateOfVisit;
+    public Order(String orderData) {
+        setMenu(orderData.split("-")[0]);
+        setCount(orderData.split("-")[1]);
     }
 
-    public int getTotalAmount(){
-        return menus.values().stream()
-                .mapToInt(Integer::intValue)
-                .sum();
+    public String getMenuName(){
+        return menu.getName();
     }
 
-    public List<Menu> getDessertMenus(){
-        return menus.keySet().stream()
-                .filter(Menu::isDessert)
-                .collect(Collectors.toList());
+    public int getCount(){
+        return count;
     }
 
-    public List<Menu> getMainMenus(){
-        return menus.keySet().stream()
-                .filter(Menu::isMain)
-                .collect(Collectors.toList());
+    public int getAmount(){
+        return menu.getPrice() * count;
     }
 
-    public LocalDate getDateOfVisit(){
-        return dateOfVisit;
+
+    private void setMenu(String menuName){
+        validateMenuName(menuName);
+        this.menu = Menu.of(menuName);
+    }
+
+    private void setCount(String count){
+        validateCount(count);
+        this.count = Utils.parseInt(count);
+    }
+
+    private static void validateMenuName(String name){
+        if(!Menu.isMenu(name))
+            throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
+    }
+
+    private static void validateCount(String numberString){
+        if(Utils.parseInt(numberString) < 1)
+            throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
+    }
+
+
+    public boolean isMain(){
+        return this.menu.isMain();
+    }
+
+    public boolean isDessert(){
+        return this.menu.isDessert();
     }
 }
