@@ -32,6 +32,36 @@ public class Plan {
         validateNumberOfOrder();
     }
 
+    public int getTotalAmount(){
+        return orderList.stream()
+                .mapToInt(Order::getAmount)
+                .sum();
+    }
+
+    public List<Order> getDessertMenus(){
+        return orderList.stream()
+                .filter(Order::isDessert)
+                .collect(Collectors.toList());
+    }
+
+    public List<Order> getMainMenus(){
+        return orderList.stream()
+                .filter(Order::isMain)
+                .collect(Collectors.toList());
+    }
+
+    public LocalDate getDateOfVisit(){
+        return dateOfVisit;
+    }
+
+    public int getDayOfVisit(){
+        return dateOfVisit.getDayOfMonth();
+    }
+
+    public List<Order> getOrderList(){
+        return orderList;
+    }
+
     private void validateOrderInputPattern(String orderInput){
         if(!Pattern.matches(ORDER_INPUT_REGEX, orderInput))
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
@@ -54,28 +84,5 @@ public class Plan {
         int lastDay = YearMonth.of(YEAR, MONTH).atEndOfMonth().getDayOfMonth();
         if(day < 1 || day > lastDay)
             throw new IllegalArgumentException(INVALID_DATE_EXCEPTION.getMessage());
-    }
-
-
-    public int getTotalAmount(){
-        return orderList.stream()
-                .mapToInt(Order::getAmount)
-                .sum();
-    }
-
-    public List<Order> getDessertMenus(){
-        return orderList.stream()
-                .filter(Order::isDessert)
-                .collect(Collectors.toList());
-    }
-
-    public List<Order> getMainMenus(){
-        return orderList.stream()
-                .filter(Order::isMain)
-                .collect(Collectors.toList());
-    }
-
-    public LocalDate getDateOfVisit(){
-        return dateOfVisit;
     }
 }

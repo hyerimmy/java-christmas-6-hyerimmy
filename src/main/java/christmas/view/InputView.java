@@ -5,7 +5,7 @@ import christmas.utils.Utils;
 
 import java.util.List;
 
-import static christmas.exception.ExceptionHandler.printExceptionWithReEnterMessage;
+import static christmas.utils.FormattedPrinter.printlnExceptionWithReEnterMessage;
 
 public class InputView {
     public static void printEnterDateOfVisit() {
@@ -16,7 +16,7 @@ public class InputView {
         try{
             return Utils.readNumber();
         } catch (IllegalArgumentException e){
-            printExceptionWithReEnterMessage(e.getMessage());
+            printlnExceptionWithReEnterMessage(e.getMessage());
             return inputDateOfVisit();
         }
     }
@@ -29,7 +29,7 @@ public class InputView {
         try{
             return Utils.readStringList();
         } catch (IllegalArgumentException e){
-            printExceptionWithReEnterMessage(e.getMessage());
+            printlnExceptionWithReEnterMessage(e.getMessage());
             return inputOrders();
         }
     }

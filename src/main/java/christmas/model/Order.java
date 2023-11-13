@@ -3,6 +3,7 @@ package christmas.model;
 import christmas.model.menu.Menu;
 import christmas.utils.Utils;
 
+import static christmas.constant.SystemSetting.KOR_COUNTING_UNIT;
 import static christmas.exception.ExceptionMessage.INVALID_ORDER_EXCEPTION;
 
 public class Order {
@@ -14,45 +15,49 @@ public class Order {
         setCount(orderData.split("-")[1]);
     }
 
-    public String getMenuName(){
+    public String getMenuName() {
         return menu.getName();
     }
 
-    public int getCount(){
+    public int getCount() {
         return count;
     }
 
-    public int getAmount(){
+    public String getMenuAndCountString() {
+        return menu.getName() + " " + count + KOR_COUNTING_UNIT;
+    }
+
+    public int getAmount() {
         return menu.getPrice() * count;
     }
 
 
-    private void setMenu(String menuName){
+    private void setMenu(String menuName) {
         validateMenuName(menuName);
         this.menu = Menu.of(menuName);
     }
 
-    private void setCount(String count){
+    private void setCount(String count) {
         validateCount(count);
         this.count = Utils.parseInt(count);
     }
 
-    private static void validateMenuName(String name){
-        if(!Menu.isMenu(name))
+    private static void validateMenuName(String name) {
+        if (!Menu.isMenu(name))
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
-    private static void validateCount(String numberString){
-        if(Utils.parseInt(numberString) < 1)
+    private static void validateCount(String numberString) {
+        if (Utils.parseInt(numberString) < 1)
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
 
-    public boolean isMain(){
+    public boolean isMain() {
         return this.menu.isMain();
     }
 
-    public boolean isDessert(){
+    public boolean isDessert() {
         return this.menu.isDessert();
     }
 }
