@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.constant.message.InputMessage;
+import christmas.exception.ExceptionHandler;
 import christmas.utils.Utils;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class InputView {
             validateDate(inputNumber);
             return inputNumber;
         } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            ExceptionHandler.printExceptionWithReEnterMessage(e.getMessage());
             return inputDateOfVisit();
         }
     }
@@ -35,7 +36,7 @@ public class InputView {
 //            validateMenus(inputStrings);
             return inputStrings;
         } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            ExceptionHandler.printExceptionWithReEnterMessage(e.getMessage());
             return inputMenus();
         }
     }
