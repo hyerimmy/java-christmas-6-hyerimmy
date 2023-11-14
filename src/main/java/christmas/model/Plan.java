@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 import static christmas.constant.SystemSetting.*;
 import static christmas.constant.message.OutputMessage.EMPTY_RESULT;
-import static christmas.exception.ExceptionMessage.INVALID_DATE_EXCEPTION;
-import static christmas.exception.ExceptionMessage.INVALID_ORDER_EXCEPTION;
+import static christmas.constant.message.ExceptionMessage.INVALID_DATE_EXCEPTION;
+import static christmas.constant.message.ExceptionMessage.INVALID_ORDER_EXCEPTION;
 
 public class Plan {
     private final LocalDate dateOfVisit;

@@ -5,7 +5,7 @@ import christmas.utils.Utils;
 
 import java.util.List;
 
-import static christmas.exception.ExceptionMessage.INVALID_DATE_EXCEPTION;
+import static christmas.constant.message.ExceptionMessage.INVALID_DATE_EXCEPTION;
 import static christmas.utils.FormattedPrinter.printlnExceptionWithReEnterMessage;
 
 public class InputView {

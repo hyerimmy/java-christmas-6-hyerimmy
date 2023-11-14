@@ -1,4 +1,4 @@
-package christmas.exception;
+package christmas.constant.message;
 
 public enum ExceptionMessage {
     NUMBER_FORMAT_EXCEPTION("숫자 형식이 아닙니다."),
@@ -9,11 +9,11 @@ public enum ExceptionMessage {
     private static final String EXCEPTION_PREFIX = "[ERROR]";
     private final String message;
 
-    ExceptionMessage(String message){
+    ExceptionMessage(String message) {
         this.message = message;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return EXCEPTION_PREFIX + " " + this.message;
     }
 }

@@ -4,7 +4,7 @@ import christmas.model.menu.Menu;
 import christmas.utils.Utils;
 
 import static christmas.constant.SystemSetting.KOR_COUNTING_UNIT;
-import static christmas.exception.ExceptionMessage.INVALID_ORDER_EXCEPTION;
+import static christmas.constant.message.ExceptionMessage.INVALID_ORDER_EXCEPTION;
 
 public class Order {
     private Menu menu;

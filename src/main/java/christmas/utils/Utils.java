@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 import static christmas.constant.SystemSetting.KOR_MONEY_FORMAT;
 import static christmas.constant.SystemSetting.KOR_MONEY_UNIT;
-import static christmas.exception.ExceptionMessage.NULL_INPUT_EXCEPTION;
-import static christmas.exception.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
+import static christmas.constant.message.ExceptionMessage.NULL_INPUT_EXCEPTION;
+import static christmas.constant.message.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
 
 
 public class Utils {
