@@ -4,7 +4,10 @@ import christmas.model.menu.Menu;
 
 import java.util.Arrays;
 
+import static christmas.constant.message.OutputMessage.EMPTY_RESULT;
+
 public enum Badge {
+    DEFAULT(EMPTY_RESULT, 0),
     STAR("별", 5_000),
     TREE("트리", 10_000),
     SANTA("산타", 20_000);

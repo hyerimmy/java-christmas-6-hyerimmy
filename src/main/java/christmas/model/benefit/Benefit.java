@@ -5,6 +5,7 @@ import christmas.model.Plan;
 import christmas.model.Order;
 import christmas.utils.Utils;
 
+import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.List;
 
@@ -63,6 +64,28 @@ public abstract class Benefit {
 
     public HashMap<Menu, Integer> getGiveawayMenus() {
         return null;
+    }
+
+    protected boolean isWeekend(DayOfWeek dayOfVisit) {
+        return (dayOfVisit.equals(DayOfWeek.FRIDAY)
+                || dayOfVisit.equals(DayOfWeek.SATURDAY)
+        );
+    }
+    protected boolean isWeekday(DayOfWeek dayOfVisit) {
+        return (dayOfVisit.equals(DayOfWeek.SUNDAY)
+                || dayOfVisit.equals(DayOfWeek.MONDAY)
+                || dayOfVisit.equals(DayOfWeek.TUESDAY)
+                || dayOfVisit.equals(DayOfWeek.WEDNESDAY)
+                || dayOfVisit.equals(DayOfWeek.THURSDAY)
+        );
+    }
+
+    protected boolean containDessertMenu(Plan plan){
+        return !plan.getDessertMenus().isEmpty();
+    }
+
+    protected boolean containMainMenu(Plan plan){
+        return !plan.getMainMenus().isEmpty();
     }
 
 }

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static christmas.constant.SystemSetting.*;
+import static christmas.constant.message.OutputMessage.EMPTY_RESULT;
 import static christmas.exception.ExceptionMessage.INVALID_DATE_EXCEPTION;
 import static christmas.exception.ExceptionMessage.INVALID_ORDER_EXCEPTION;
 
@@ -83,7 +84,7 @@ public class Plan {
         GiveawayEvent giveawayEventInstance = Benefit.getGiveawayEventInstance();
         if (benefitList.contains(giveawayEventInstance))
             return giveawayEventInstance.getGivewayMenuAndCountString(this);
-        return null;
+        return EMPTY_RESULT;
     }
 
     public List<String> getBenefitList() {

@@ -119,12 +119,8 @@ public class EventController {
     /* 12월 이벤트 배지 출력 */
     private void showEventBadge() {
         OutputView.printEventBadgeHeader();
-
         String resultBadgeName = Badge.getBadgeNameOf(plan.getTotalBenefitAmount());
-        if(resultBadgeName.isEmpty())
-            resultBadgeName = EMPTY_RESULT;
         System.out.println(resultBadgeName);
-
         System.out.println();
     }
 }

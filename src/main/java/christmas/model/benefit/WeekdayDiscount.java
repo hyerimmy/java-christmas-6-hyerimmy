@@ -19,12 +19,7 @@ public class WeekdayDiscount extends Benefit {
     @Override
     public boolean applyToDiscount(Plan plan) {
         DayOfWeek dayOfVisit = plan.getDateOfVisit().getDayOfWeek();
-        return (dayOfVisit.equals(DayOfWeek.SUNDAY)
-                || dayOfVisit.equals(DayOfWeek.MONDAY)
-                || dayOfVisit.equals(DayOfWeek.TUESDAY)
-                || dayOfVisit.equals(DayOfWeek.WEDNESDAY)
-                || dayOfVisit.equals(DayOfWeek.THURSDAY)
-        );
+        return isWeekday(dayOfVisit) && containDessertMenu(plan);
     }
 
     @Override
