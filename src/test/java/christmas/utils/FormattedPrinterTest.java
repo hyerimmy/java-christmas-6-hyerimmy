@@ -1,21 +1,17 @@
 package christmas.utils;
 
-import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FormattedPrinterTest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @BeforeEach
-    void init(){
+    void init() {
         System.setOut(new PrintStream(out));
     }
 
