@@ -3,6 +3,7 @@ package christmas.model.benefit;
 import christmas.model.Plan;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class WeekdayDiscount extends Benefit {
     private static final WeekdayDiscount instance = new WeekdayDiscount();
@@ -18,6 +19,9 @@ public class WeekdayDiscount extends Benefit {
 
     @Override
     public boolean applyToDiscount(Plan plan) {
+        if(!includeInEventDate(plan.getDateOfVisit()))
+            return false;
+
         DayOfWeek dayOfVisit = plan.getDateOfVisit().getDayOfWeek();
         return isWeekday(dayOfVisit) && containDessertMenu(plan);
     }

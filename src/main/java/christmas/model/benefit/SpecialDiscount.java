@@ -30,11 +30,13 @@ public class SpecialDiscount extends Benefit {
     @Override
     public boolean applyToDiscount(Plan plan) {
         LocalDate dateOfVisit = plan.getDateOfVisit();
+        if(!includeInEventDate(dateOfVisit))
+            return false;
         return specialDates.contains(dateOfVisit);
     }
 
     @Override
     public int getDiscountAmount(Plan plan) {
-        return discountAmount;
+        return Math.min(plan.getTotalAmount(), discountAmount);
     }
 }

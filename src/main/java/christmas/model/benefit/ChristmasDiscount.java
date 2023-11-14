@@ -9,28 +9,29 @@ import static christmas.constant.SystemSetting.YEAR;
 
 public class ChristmasDiscount extends Benefit {
     private static final ChristmasDiscount instance = new ChristmasDiscount();
-    private final static LocalDate startDate = LocalDate.of(YEAR, MONTH, 1);
-    private final static LocalDate endDate = LocalDate.of(YEAR, MONTH, 25);
     private final static int defaultAmount = 1_000;
     private final static int unitAmount = 100;
 
     public ChristmasDiscount() {
-        super("크리스마스 디데이 할인");
+        super(
+                "크리스마스 디데이 할인",
+                LocalDate.of(YEAR, MONTH, 1),
+                LocalDate.of(YEAR, MONTH, 25)
+        );
     }
 
-    protected static ChristmasDiscount getInstance(){
+    protected static ChristmasDiscount getInstance() {
         return instance;
     }
 
     @Override
-    public int getDiscountAmount(Plan plan){
+    public int getDiscountAmount(Plan plan) {
         LocalDate dateOfVisit = plan.getDateOfVisit();
-        return (defaultAmount + (dateOfVisit.getDayOfMonth()-1) * unitAmount);
+        return (defaultAmount + (dateOfVisit.getDayOfMonth() - 1) * unitAmount);
     }
 
     @Override
-    public boolean applyToDiscount(Plan plan){
-        LocalDate dateOfVisit = plan.getDateOfVisit();
-        return (!dateOfVisit.isBefore(startDate) && !dateOfVisit.isAfter(endDate));
+    public boolean applyToDiscount(Plan plan) {
+        return includeInEventDate(plan.getDateOfVisit());
     }
 }

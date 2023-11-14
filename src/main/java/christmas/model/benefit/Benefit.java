@@ -6,14 +6,41 @@ import christmas.model.Order;
 import christmas.utils.Utils;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.List;
 
+import static christmas.constant.SystemSetting.MONTH;
+import static christmas.constant.SystemSetting.YEAR;
+
 public abstract class Benefit {
     private final String title;
+    private LocalDate startDate = YearMonth.of(YEAR, MONTH).atDay(1);
+    private LocalDate endDate = YearMonth.of(YEAR, MONTH).atEndOfMonth();
+
+    private final List<DayOfWeek> weekdays = List.of(
+            DayOfWeek.SUNDAY,
+            DayOfWeek.MONDAY,
+            DayOfWeek.TUESDAY,
+            DayOfWeek.WEDNESDAY,
+            DayOfWeek.THURSDAY
+    );
+
+    private final List<DayOfWeek> weekends = List.of(
+            DayOfWeek.FRIDAY,
+            DayOfWeek.SATURDAY
+    );
+
 
     protected Benefit(String title) {
         this.title = title;
+    }
+
+    protected Benefit(String title, LocalDate startDate, LocalDate endDate) {
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public static List<Benefit> getAllInstances() {
@@ -66,18 +93,15 @@ public abstract class Benefit {
         return null;
     }
 
+    protected boolean includeInEventDate(LocalDate dateOfVisit) {
+        return (!dateOfVisit.isBefore(startDate) && !dateOfVisit.isAfter(endDate));
+    }
+
     protected boolean isWeekend(DayOfWeek dayOfVisit) {
-        return (dayOfVisit.equals(DayOfWeek.FRIDAY)
-                || dayOfVisit.equals(DayOfWeek.SATURDAY)
-        );
+        return weekends.contains(dayOfVisit);
     }
     protected boolean isWeekday(DayOfWeek dayOfVisit) {
-        return (dayOfVisit.equals(DayOfWeek.SUNDAY)
-                || dayOfVisit.equals(DayOfWeek.MONDAY)
-                || dayOfVisit.equals(DayOfWeek.TUESDAY)
-                || dayOfVisit.equals(DayOfWeek.WEDNESDAY)
-                || dayOfVisit.equals(DayOfWeek.THURSDAY)
-        );
+        return weekdays.contains(dayOfVisit);
     }
 
     protected boolean containDessertMenu(Plan plan){

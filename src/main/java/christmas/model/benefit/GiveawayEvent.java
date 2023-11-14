@@ -19,6 +19,8 @@ public class GiveawayEvent extends Benefit {
 
     @Override
     public boolean applyToDiscount(Plan plan) {
+        if(!includeInEventDate(plan.getDateOfVisit()))
+            return false;
         return (plan.getTotalAmount() >= amountCondition);
     }
 
