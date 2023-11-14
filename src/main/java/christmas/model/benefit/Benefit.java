@@ -1,6 +1,5 @@
 package christmas.model.benefit;
 
-import christmas.model.menu.Menu;
 import christmas.model.Plan;
 import christmas.model.Order;
 import christmas.utils.Utils;
@@ -8,7 +7,6 @@ import christmas.utils.Utils;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.HashMap;
 import java.util.List;
 
 import static christmas.constant.SystemSetting.MONTH;
@@ -26,10 +24,17 @@ public abstract class Benefit {
             DayOfWeek.WEDNESDAY,
             DayOfWeek.THURSDAY
     );
-
     private final List<DayOfWeek> weekends = List.of(
             DayOfWeek.FRIDAY,
             DayOfWeek.SATURDAY
+    );
+
+    private static final List<Benefit> benefitInstances = List.of(
+            ChristmasDiscount.getInstance(),
+            WeekdayDiscount.getInstance(),
+            WeekendDiscount.getInstance(),
+            SpecialDiscount.getInstance(),
+            GiveawayEvent.getInstance()
     );
 
 
@@ -44,33 +49,11 @@ public abstract class Benefit {
     }
 
     public static List<Benefit> getAllInstances() {
-        return List.of(
-                ChristmasDiscount.getInstance(),
-                WeekdayDiscount.getInstance(),
-                WeekendDiscount.getInstance(),
-                SpecialDiscount.getInstance(),
-                GiveawayEvent.getInstance()
-        );
-    }
-
-    public static ChristmasDiscount getChristmasDiscountInstance() {
-        return ChristmasDiscount.getInstance();
+        return benefitInstances;
     }
 
     public static GiveawayEvent getGiveawayEventInstance() {
         return GiveawayEvent.getInstance();
-    }
-
-    public static SpecialDiscount getSpecialDiscountInstance() {
-        return SpecialDiscount.getInstance();
-    }
-
-    public static WeekdayDiscount getWeekdayDiscountInstance() {
-        return WeekdayDiscount.getInstance();
-    }
-
-    public static WeekendDiscount getWeekendDiscountInstance() {
-        return WeekendDiscount.getInstance();
     }
 
     public String getTitleAndAmountString(Plan plan) {
@@ -89,10 +72,6 @@ public abstract class Benefit {
         return amountSum;
     }
 
-    public HashMap<Menu, Integer> getGiveawayMenus() {
-        return null;
-    }
-
     protected boolean includeInEventDate(LocalDate dateOfVisit) {
         return (!dateOfVisit.isBefore(startDate) && !dateOfVisit.isAfter(endDate));
     }
@@ -100,15 +79,16 @@ public abstract class Benefit {
     protected boolean isWeekend(DayOfWeek dayOfVisit) {
         return weekends.contains(dayOfVisit);
     }
+
     protected boolean isWeekday(DayOfWeek dayOfVisit) {
         return weekdays.contains(dayOfVisit);
     }
 
-    protected boolean containDessertMenu(Plan plan){
+    protected boolean containDessertMenu(Plan plan) {
         return !plan.getDessertMenus().isEmpty();
     }
 
-    protected boolean containMainMenu(Plan plan){
+    protected boolean containMainMenu(Plan plan) {
         return !plan.getMainMenus().isEmpty();
     }
 
