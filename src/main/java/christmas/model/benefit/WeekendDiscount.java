@@ -17,7 +17,7 @@ public class WeekendDiscount extends Benefit {
     }
 
     @Override
-    public boolean applyToDiscount(Plan plan) {
+    public boolean applyBenefit(Plan plan) {
         if(!includeInEventDate(plan.getDateOfVisit()))
             return false;
         DayOfWeek dayOfVisit = plan.getDateOfVisit().getDayOfWeek();
@@ -26,6 +26,6 @@ public class WeekendDiscount extends Benefit {
 
     @Override
     public int getDiscountAmount(Plan plan) {
-        return calculateDiscountPerMenu(plan.getMainMenus(), discountAmountPerMenu);
+        return calculateDiscountPerMenu(plan.getMainMenuOrders(), discountAmountPerMenu);
     }
 }

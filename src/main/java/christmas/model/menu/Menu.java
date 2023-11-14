@@ -33,6 +33,9 @@ public enum Menu {
     public boolean isDessert(){
         return type.equals(MenuType.DESSERT);
     }
+    public boolean isDrink(){
+        return type.equals(MenuType.DRINK);
+    }
 
     public static boolean isMenu(String menuName){
         return Arrays.stream(Menu.values())

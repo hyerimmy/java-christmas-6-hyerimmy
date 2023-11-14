@@ -68,7 +68,7 @@ public class EventController {
     /* 주문 메뉴 출력 */
     private void showOrderedMenu() {
         OutputView.printOrderedMenuHeader();
-        for(Order order : plan.getOrderList()){
+        for(Order order : plan.getOrders()){
             System.out.println(order.getMenuAndCountString());
         }
         System.out.println();

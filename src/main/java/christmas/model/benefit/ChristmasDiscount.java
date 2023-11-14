@@ -31,7 +31,7 @@ public class ChristmasDiscount extends Benefit {
     }
 
     @Override
-    public boolean applyToDiscount(Plan plan) {
+    public boolean applyBenefit(Plan plan) {
         return includeInEventDate(plan.getDateOfVisit());
     }
 }

@@ -45,16 +45,26 @@ public class Plan {
         return getTotalAmount() - getTotalDiscountAmount();
     }
 
-    public List<Order> getDessertMenus() {
+    public List<Order> getDessertMenuOrders() {
         return orderList.stream()
                 .filter(Order::isDessert)
                 .collect(Collectors.toList());
     }
 
-    public List<Order> getMainMenus() {
+    public List<Order> getMainMenuOrders() {
         return orderList.stream()
                 .filter(Order::isMain)
                 .collect(Collectors.toList());
+    }
+
+    public List<Order> getDrinkMenuOrders() {
+        return orderList.stream()
+                .filter(Order::isDrink)
+                .collect(Collectors.toList());
+    }
+
+    public boolean containOnlyDrinkMenus(){
+        return getOrders().size() == getDrinkMenuOrders().size();
     }
 
     public LocalDate getDateOfVisit() {
@@ -65,18 +75,20 @@ public class Plan {
         return dateOfVisit.getDayOfMonth();
     }
 
-    public List<Order> getOrderList() {
+    public List<Order> getOrders() {
         return orderList;
     }
 
     public void calculateBenefitList() {
+        if(!Benefit.isEventApplicable(this))
+            return;
         for (Benefit benefit : Benefit.getAllInstances()) {
             checkAndAddBenefit(benefit);
         }
     }
 
     private void checkAndAddBenefit(Benefit benefit) {
-        if (benefit.applyToDiscount(this))
+        if (benefit.applyBenefit(this))
             benefitList.add(benefit);
     }
 

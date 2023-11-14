@@ -64,4 +64,8 @@ public class Order {
     public boolean isDessert() {
         return this.menu.isDessert();
     }
+
+    public boolean isDrink() {
+        return this.menu.isDrink();
+    }
 }
