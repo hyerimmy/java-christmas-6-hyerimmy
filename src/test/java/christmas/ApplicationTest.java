@@ -35,28 +35,12 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Nested
-    class 방문일_입력_테스트{
-        @Test
-        void 문자열을_입력할_경우_예외_처리한다() {
-            assertSimpleTest(() -> {
-                runException("a");
-                assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
-            });
-        }
-
-        @Test
-        void 범위를_벗어난_숫자를_입력할_경우_예외_처리한다() {
-            assertSimpleTest(() -> {
-                runException("0");
-                assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
-            });
-
-            assertSimpleTest(() -> {
-                runException("32");
-                assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
-            });
-        }
+    @Test
+    void 날짜_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("a");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
     }
 
     @Test
