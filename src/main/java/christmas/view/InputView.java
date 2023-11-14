@@ -5,6 +5,7 @@ import christmas.utils.Utils;
 
 import java.util.List;
 
+import static christmas.exception.ExceptionMessage.INVALID_DATE_EXCEPTION;
 import static christmas.utils.FormattedPrinter.printlnExceptionWithReEnterMessage;
 
 public class InputView {
@@ -16,7 +17,7 @@ public class InputView {
         try{
             return Utils.readNumber();
         } catch (IllegalArgumentException e){
-            printlnExceptionWithReEnterMessage(e.getMessage());
+            printlnExceptionWithReEnterMessage(INVALID_DATE_EXCEPTION.getMessage());
             return inputDateOfVisit();
         }
     }
