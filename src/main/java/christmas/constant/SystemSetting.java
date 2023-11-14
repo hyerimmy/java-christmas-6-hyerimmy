@@ -11,4 +11,13 @@ public class SystemSetting {
     public static final String KOR_MONEY_UNIT = "원";
     public static final String KOR_COUNTING_UNIT = "개";
     public static final String ORDER_INPUT_REGEX = "^[가-힣]+-[0-9]+$";
+
+    public static final String MERRY_CHRISTMAS_ART = """
+            *˚ •*˛ *˚ ˛★Merry★* 。 • ˚ ˚  ˛ ˛  •˛• *
+             。。* ˛ 。 * ˚• ★Christmas★ 。 ˚ *˚ ˛ • ˚
+              。  • * ˚*˚ ˛ _Π_____*。˚ ˛˛  °  •˛•*
+              ˛*˚ ˛˛  •˛•*/_______/~＼。˚  ˚* ˚ • ˛ *
+            ˚ ˛。 • ˚ ˚ •˛｜ 田 田 ｜ 0｜ • ° •˛ ˚ ˛˚˛
+
+            """;
 }

@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.model.Badge;
 import christmas.model.Order;
 import christmas.model.Plan;
+import christmas.utils.FormattedPrinter;
 import christmas.utils.Utils;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -19,6 +20,7 @@ public class EventController {
         OutputView.printWelcomeMessage();
         makePlan();
         showEventBenefitsPreview();
+        showMerryChristmasArt();
     }
 
     /* 방문일, 주문 목록 계획 설정 */
@@ -122,5 +124,9 @@ public class EventController {
         String resultBadgeName = Badge.getBadgeNameOf(plan.getTotalBenefitAmount());
         System.out.println(resultBadgeName);
         System.out.println();
+    }
+
+    private void showMerryChristmasArt(){
+        FormattedPrinter.printMerryChristmasArt();
     }
 }
