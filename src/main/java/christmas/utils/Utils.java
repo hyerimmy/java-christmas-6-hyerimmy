@@ -12,36 +12,40 @@ import static christmas.exception.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
 
 
 public class Utils {
-    public static int readNumber(){
+    public static int readNumber() {
         return parseInt(Console.readLine());
     }
 
-    public static int parseInt(String string){
-        try{
+    public static int parseInt(String string) {
+        try {
             return Integer.parseInt(string);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION.getMessage());
         }
     }
 
-    public static List<String> readStringList(){
-        String inputString = Console.readLine();
-        List<String> stringList = Stream.of(inputString.split(","))
+    public static List<String> readStringList() {
+        return parseStringList(Console.readLine());
+    }
+
+    private static List<String> parseStringList(String string) {
+        List<String> stringList = Stream.of(string.split(","))
+                .map(String::trim)
                 .filter(s -> !s.isEmpty())
                 .toList();
 
-        if(stringList.size() == 0)
+        if (stringList.size() == 0)
             throw new IllegalArgumentException(NULL_INPUT_EXCEPTION.getMessage());
         return stringList;
     }
 
-    public static String getFormattedKorMoney(int amount){
+    public static String getFormattedKorMoney(int amount) {
         return KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;
     }
 
-    public static String getFormattedKorDiscountMoney(int amount){
-        if(amount == 0)
+    public static String getFormattedKorDiscountMoney(int amount) {
+        if (amount == 0)
             return amount + KOR_MONEY_UNIT;
-        return "-"+KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;
+        return "-" + KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;
     }
 }
