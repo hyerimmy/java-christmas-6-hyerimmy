@@ -13,11 +13,12 @@ public class SystemSetting {
     public static final String ORDER_INPUT_REGEX = "^[가-힣]+-[0-9]+$";
 
     public static final String MERRY_CHRISTMAS_ART = """
-            *˚ •*˛ *˚ ˛★Merry★* 。 • ˚ ˚  ˛ ˛  •˛• *
-             。。* ˛ 。 * ˚• ★Christmas★ 。 ˚ *˚ ˛ • ˚
+            *˚ *˚ ˛★Event will be continued ★*•*˛  。
+             。。* ˚ *˚  ★in January 2024!★ 。˛ ˚ ˚˛  
               。  • * ˚*˚ ˛ _Π_____*。˚ ˛˛  °  •˛•*
               ˛*˚ ˛˛  •˛•*/_______/~＼。˚  ˚* ˚ • ˛ *
-            ˚ ˛。 • ˚ ˚ •˛｜ 田 田 ｜ 0｜ • ° •˛ ˚ ˛˚˛
-
+            ˚ ˛。 • ˚ ˚ •˛｜ 田 田  ｜ 0｜ • ° •˛ ˚ ˛˚˛
+             ╭ ◜◝ ͡ ◜◝ ͡ ◜◝ ͡ ◜◝ ͡ ◜◝ ͡ ◜◝ ͡ ◜◝ ͡ ◜◝ ͡ ◜◝╮
+               
             """;
 }
