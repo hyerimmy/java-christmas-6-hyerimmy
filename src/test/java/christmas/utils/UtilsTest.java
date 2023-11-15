@@ -20,7 +20,7 @@ public class UtilsTest {
     }
 
     @Nested
-    @DisplayName("숫자 입력 테스트")
+    @DisplayName("[숫자 입력 테스트]")
     class ReadNumberTest {
         @Test
         @DisplayName("숫자를 입력할 경우 int값으로 변환하여 반환한다")
@@ -48,7 +48,7 @@ public class UtilsTest {
     }
 
     @Nested
-    @DisplayName("문자열 리스트 입력 테스트")
+    @DisplayName("[문자열 리스트 입력 테스트]")
     class ReadStringListTest {
 
         @Test
