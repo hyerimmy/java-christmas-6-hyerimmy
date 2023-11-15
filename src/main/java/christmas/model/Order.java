@@ -31,7 +31,7 @@ public class Order {
         return menu.getName() + " " + count + KOR_COUNTING_UNIT;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return menu.getPrice() * count;
     }
 

@@ -19,10 +19,10 @@ public enum Menu {
     CHAMPAGNE("샴페인", 25_000, MenuType.DRINK);
 
     private final String name;
-    private final int price;
+    private final long price;
     private final MenuType type;
 
-    Menu(String name, int price, MenuType type) {
+    Menu(String name, long price, MenuType type) {
         this.name = name;
         this.price = price;
         this.type = type;
@@ -51,7 +51,7 @@ public enum Menu {
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage()));
     }
 
-    public int getPrice(){
+    public long getPrice(){
         return price;
     }
 

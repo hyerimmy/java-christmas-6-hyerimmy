@@ -25,7 +25,7 @@ public class GiveawayEvent extends Benefit {
     }
 
     @Override
-    public int getDiscountAmount(Plan plan) {
+    public long getDiscountAmount(Plan plan) {
         return giveaway.getAmount();
     }
 

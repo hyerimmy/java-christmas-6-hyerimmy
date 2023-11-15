@@ -39,11 +39,11 @@ public class Utils {
         return stringList;
     }
 
-    public static String getFormattedKorMoney(int amount) {
+    public static String getFormattedKorMoney(long amount) {
         return KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;
     }
 
-    public static String getFormattedKorDiscountMoney(int amount) {
+    public static String getFormattedKorDiscountMoney(long amount) {
         if (amount == 0)
             return amount + KOR_MONEY_UNIT;
         return "-" + KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;

@@ -17,7 +17,7 @@ public abstract class Benefit {
     private LocalDate startDate = YearMonth.of(YEAR, MONTH).atDay(1);
     private LocalDate endDate = YearMonth.of(YEAR, MONTH).atEndOfMonth();
 
-    private static final int minimunAmountToApplyEvent = 10_000;
+    private static final int minimumAmountToApplyEvent = 10_000;
 
     private final List<DayOfWeek> weekdays = List.of(
             DayOfWeek.SUNDAY,
@@ -55,7 +55,7 @@ public abstract class Benefit {
     }
 
     public static boolean isEventApplicable(Plan plan) {
-        return plan.getTotalAmount() >= minimunAmountToApplyEvent && !plan.containOnlyDrinkMenus();
+        return plan.getTotalAmount() >= minimumAmountToApplyEvent && !plan.containOnlyDrinkMenus();
     }
 
     public static GiveawayEvent getGiveawayEventInstance() {
@@ -68,7 +68,7 @@ public abstract class Benefit {
 
     abstract public boolean applyBenefit(Plan plan);
 
-    abstract public int getDiscountAmount(Plan plan);
+    abstract public long getDiscountAmount(Plan plan);
 
     protected int calculateDiscountPerMenu(List<Order> orderList, int discountAmountPerMenu) {
         int amountSum = 0;

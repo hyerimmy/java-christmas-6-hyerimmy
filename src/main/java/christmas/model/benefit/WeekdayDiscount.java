@@ -26,7 +26,7 @@ public class WeekdayDiscount extends Benefit {
     }
 
     @Override
-    public int getDiscountAmount(Plan plan) {
+    public long getDiscountAmount(Plan plan) {
         return calculateDiscountPerMenu(plan.getDessertMenuOrders(), discountAmountPerMenu);
     }
 }

@@ -77,7 +77,7 @@ public class EventController {
     /* 할인 전 총주문 금액 출력 */
     private void showTotalAmountBeforeDiscount() {
         OutputView.printTotalAmountBeforeDiscountHeader();
-        int totalAmount = plan.getTotalAmount();
+        long totalAmount = plan.getTotalAmount();
         System.out.println(Utils.getFormattedKorMoney(totalAmount));
         System.out.println();
     }
@@ -103,7 +103,7 @@ public class EventController {
     /* 총혜택 금액 출력 */
     private void showTotalBenefitAmount() {
         OutputView.printTotalBenefitAmountHeader();
-        int totalBenefitAmount = plan.getTotalBenefitAmount();
+        long totalBenefitAmount = plan.getTotalBenefitAmount();
         System.out.println(Utils.getFormattedKorDiscountMoney(totalBenefitAmount));
         System.out.println();
     }
@@ -111,7 +111,7 @@ public class EventController {
     /* 할인 후 예상 결제 금액 */
     private void showTotalAmountAfterDiscount() {
         OutputView.printTotalAmountAfterDiscountHeader();
-        int totalAmountAfterDiscount = plan.getTotalAmountAfterDiscount();
+        long totalAmountAfterDiscount = plan.getTotalAmountAfterDiscount();
         System.out.println(Utils.getFormattedKorMoney(totalAmountAfterDiscount));
         System.out.println();
 

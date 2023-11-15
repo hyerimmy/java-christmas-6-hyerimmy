@@ -36,7 +36,7 @@ public class SpecialDiscount extends Benefit {
     }
 
     @Override
-    public int getDiscountAmount(Plan plan) {
+    public long getDiscountAmount(Plan plan) {
         return Math.min(plan.getTotalAmount(), discountAmount);
     }
 }

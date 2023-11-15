@@ -35,13 +35,13 @@ public class Plan {
         validateNumberOfOrder();
     }
 
-    public int getTotalAmount() {
+    public long getTotalAmount() {
         return orderList.stream()
-                .mapToInt(Order::getAmount)
+                .mapToLong(Order::getAmount)
                 .sum();
     }
 
-    public int getTotalAmountAfterDiscount() {
+    public long getTotalAmountAfterDiscount() {
         return getTotalAmount() - getTotalDiscountAmount();
     }
 
@@ -107,16 +107,16 @@ public class Plan {
         return result;
     }
 
-    public int getTotalBenefitAmount() {
-        int amount = 0;
+    public long getTotalBenefitAmount() {
+        long amount = 0;
         for (Benefit benefit : benefitList) {
             amount += benefit.getDiscountAmount(this);
         }
         return amount;
     }
 
-    private int getTotalDiscountAmount() {
-        int amount = 0;
+    private long getTotalDiscountAmount() {
+        long amount = 0;
         for (Benefit benefit : benefitList) {
             if(benefit == Benefit.getGiveawayEventInstance())
                 continue;

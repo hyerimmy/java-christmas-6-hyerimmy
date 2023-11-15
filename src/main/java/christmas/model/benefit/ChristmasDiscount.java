@@ -25,7 +25,7 @@ public class ChristmasDiscount extends Benefit {
     }
 
     @Override
-    public int getDiscountAmount(Plan plan) {
+    public long getDiscountAmount(Plan plan) {
         LocalDate dateOfVisit = plan.getDateOfVisit();
         return (defaultAmount + (dateOfVisit.getDayOfMonth() - 1) * unitAmount);
     }
