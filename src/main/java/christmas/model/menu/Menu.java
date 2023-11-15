@@ -2,11 +2,13 @@ package christmas.model.menu;
 
 import java.util.Arrays;
 
+import static christmas.constant.message.ExceptionMessage.INVALID_ORDER_EXCEPTION;
+
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, MenuType.APPETIZER),
     TAPAS("타파스", 5_500, MenuType.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8_000, MenuType.APPETIZER),
-    TBONE_STEAK("티본스테이크", 55_000, MenuType.MAIN),
+    T_BONE_STEAK("티본스테이크", 55_000, MenuType.MAIN),
     BARBECUE_LIP("바비큐립", 54_000, MenuType.MAIN),
     SEAFOOD_PASTA("해산물파스타", 35_000, MenuType.MAIN),
     CHRISTMAS_PASTA("크리스마스파스타", 25_000, MenuType.MAIN),
@@ -37,7 +39,7 @@ public enum Menu {
         return type.equals(MenuType.DRINK);
     }
 
-    public static boolean isMenu(String menuName){
+    public static boolean isValidMenu(String menuName){
         return Arrays.stream(Menu.values())
                 .anyMatch(menu -> menu.name.equals(menuName));
     }
@@ -45,12 +47,14 @@ public enum Menu {
     public static Menu of(String targetName) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.name.equals(targetName))
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage()));
     }
 
     public int getPrice(){
         return price;
     }
+
     public String getName(){
         return name;
     }

@@ -47,7 +47,7 @@ public class Order {
     }
 
     private static void validateMenuName(String name) {
-        if (!Menu.isMenu(name))
+        if (!Menu.isValidMenu(name))
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
