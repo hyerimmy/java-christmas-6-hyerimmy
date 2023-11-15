@@ -41,7 +41,6 @@ public class Order {
 
 
     private void setMenu(String menuName) {
-        validateMenuName(menuName);
         this.menu = Menu.of(menuName);
     }
 
@@ -52,11 +51,6 @@ public class Order {
 
     private void validateOrderDataPattern(String orderData) {
         if (!Pattern.matches(ORDER_INPUT_REGEX, orderData))
-            throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
-    }
-
-    private static void validateMenuName(String name) {
-        if (!Menu.isValidMenu(name))
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 

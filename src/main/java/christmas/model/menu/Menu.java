@@ -39,11 +39,6 @@ public enum Menu {
         return type.equals(MenuType.DRINK);
     }
 
-    public static boolean isValidMenu(String menuName){
-        return Arrays.stream(Menu.values())
-                .anyMatch(menu -> menu.name.equals(menuName));
-    }
-
     public static Menu of(String targetName) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.name.equals(targetName))
