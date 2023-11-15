@@ -48,7 +48,7 @@ public class Plan {
 
     public long getTotalAmountAfterDiscount() {
         return getTotalAmount() - getTotalDiscountAmount();
-    } //TODO : test code
+    }
 
     public List<Order> getDessertMenuOrders() {
         return orderList.stream()
