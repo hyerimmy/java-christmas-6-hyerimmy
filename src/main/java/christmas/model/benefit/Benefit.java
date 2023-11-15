@@ -63,7 +63,8 @@ public abstract class Benefit {
     }
 
     public String getTitleAndAmountString(Plan plan) {
-        return title + ": " + Utils.getFormattedKorDiscountMoney(getDiscountAmount(plan));
+        String amountString = Utils.getFormattedKorDiscountMoney(getDiscountAmount(plan));
+        return Utils.getFormattedTitleAndContents(title, amountString);
     }
 
     abstract public boolean applyBenefit(Plan plan);

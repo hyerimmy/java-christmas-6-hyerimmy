@@ -5,8 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static christmas.constant.SystemSetting.KOR_MONEY_FORMAT;
-import static christmas.constant.SystemSetting.KOR_MONEY_UNIT;
+import static christmas.constant.SystemSetting.*;
 import static christmas.constant.message.ExceptionMessage.NULL_INPUT_EXCEPTION;
 import static christmas.constant.message.ExceptionMessage.NUMBER_FORMAT_EXCEPTION;
 
@@ -29,7 +28,7 @@ public class Utils {
     }
 
     private static List<String> parseStringList(String string) {
-        List<String> stringList = Stream.of(string.split(","))
+        List<String> stringList = Stream.of(string.split(COMMAS))
                 .map(String::trim)
                 .filter(s -> !s.isEmpty())
                 .toList();
@@ -46,6 +45,9 @@ public class Utils {
     public static String getFormattedKorDiscountMoney(long amount) {
         if (amount == 0)
             return amount + KOR_MONEY_UNIT;
-        return "-" + KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;
+        return MINUS_SIGN + KOR_MONEY_FORMAT.format(amount) + KOR_MONEY_UNIT;
+    }
+    public static String getFormattedTitleAndContents(String title, String contents){
+        return title + DELIMITER + contents;
     }
 }
