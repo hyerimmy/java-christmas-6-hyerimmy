@@ -15,6 +15,7 @@ public class SpecialDiscount extends Benefit {
             LocalDate.of(YEAR, MONTH, 3),
             LocalDate.of(YEAR, MONTH, 10),
             LocalDate.of(YEAR, MONTH, 17),
+            LocalDate.of(YEAR, MONTH, 24),
             LocalDate.of(YEAR, MONTH, 25),
             LocalDate.of(YEAR, MONTH, 31)
     );

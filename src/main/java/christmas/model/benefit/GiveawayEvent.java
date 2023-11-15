@@ -29,7 +29,7 @@ public class GiveawayEvent extends Benefit {
         return giveaway.getAmount();
     }
 
-    public String getGivewayMenuAndCountString(Plan plan) {
+    public String getGivewayMenuAndCountString() {
         return giveaway.getMenuAndCountString();
     }
 }

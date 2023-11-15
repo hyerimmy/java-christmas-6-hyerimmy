@@ -96,7 +96,7 @@ public class Plan {
     public String getGiveawayResult() {
         GiveawayEvent giveawayEventInstance = Benefit.getGiveawayEventInstance();
         if (benefitList.contains(giveawayEventInstance))
-            return giveawayEventInstance.getGivewayMenuAndCountString(this);
+            return giveawayEventInstance.getGivewayMenuAndCountString();
         return EMPTY_RESULT;
     }
 
