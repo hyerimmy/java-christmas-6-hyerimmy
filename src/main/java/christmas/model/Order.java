@@ -19,6 +19,7 @@ public class Order {
         setCount(orderData.split("-")[1]);
     }
     public Order(Menu menu, int count) {
+        validateCount(count);
         this.menu = menu;
         this.count = count;
     }
@@ -45,7 +46,7 @@ public class Order {
     }
 
     private void setCount(String count) {
-        validateCount(count);
+        validateCount(Utils.parseInt(count));
         this.count = Utils.parseInt(count);
     }
 
@@ -54,8 +55,8 @@ public class Order {
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
-    private static void validateCount(String numberString) {
-        if (Utils.parseInt(numberString) < 1)
+    private static void validateCount(int count) {
+        if (count < 1)
             throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
