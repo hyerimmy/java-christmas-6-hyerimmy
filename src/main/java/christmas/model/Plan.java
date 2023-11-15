@@ -48,7 +48,7 @@ public class Plan {
 
     public long getTotalAmountAfterDiscount() {
         return getTotalAmount() - getTotalDiscountAmount();
-    }
+    } //TODO : test code
 
     public List<Order> getDessertMenuOrders() {
         return orderList.stream()
@@ -62,7 +62,7 @@ public class Plan {
                 .collect(Collectors.toList());
     }
 
-    public List<Order> getDrinkMenuOrders() {
+    private List<Order> getDrinkMenuOrders() {
         return orderList.stream()
                 .filter(Order::isDrink)
                 .collect(Collectors.toList());
@@ -74,10 +74,6 @@ public class Plan {
 
     public LocalDate getDateOfVisit() {
         return dateOfVisit;
-    }
-
-    public int getDayOfVisit() {
-        return dateOfVisit.getDayOfMonth();
     }
 
     public List<Order> getOrders() {

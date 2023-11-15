@@ -33,7 +33,7 @@ public class EventController {
 
     /* 이벤트 혜택 미리 보기 결과 출력 */
     private void showEventBenefitsPreview() {
-        OutputView.printEventBenefitsPreviewMessage(plan.getDayOfVisit());
+        OutputView.printEventBenefitsPreviewMessage(plan.getDateOfVisit());
         plan.calculateBenefitList();
 
         showOrderedMenu();

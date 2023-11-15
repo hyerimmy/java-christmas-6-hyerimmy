@@ -2,6 +2,8 @@ package christmas.view;
 
 import christmas.utils.FormattedPrinter;
 
+import java.time.LocalDate;
+
 import static christmas.constant.message.OutputMessage.*;
 
 public class OutputView {
@@ -10,7 +12,8 @@ public class OutputView {
         System.out.println(WELCOME_MESSAGE);
     }
 
-    public static void printEventBenefitsPreviewMessage(int day) {
+    public static void printEventBenefitsPreviewMessage(LocalDate visitOfDate) {
+        int day = visitOfDate.getDayOfMonth();
         System.out.println();
         System.out.println(CHRISTMAS_THEME_DIVIDER);
         System.out.printf(EVENT_BENEFITS_PREVIEW_MESSAGE+"%n",day);
