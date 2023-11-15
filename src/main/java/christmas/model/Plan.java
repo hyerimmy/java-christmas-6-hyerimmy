@@ -28,7 +28,6 @@ public class Plan {
         orderList.clear();
 
         for (String orderInput : orderInputs) {
-            validateOrderInputPattern(orderInput);
             orderList.add(new Order(orderInput));
         }
         validateDuplicateMenu();
@@ -123,12 +122,6 @@ public class Plan {
             amount += benefit.getDiscountAmount(this);
         }
         return amount;
-    }
-
-
-    private void validateOrderInputPattern(String orderInput) {
-        if (!Pattern.matches(ORDER_INPUT_REGEX, orderInput))
-            throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
     /* 중복 메뉴 검증 */

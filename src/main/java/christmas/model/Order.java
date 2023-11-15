@@ -3,7 +3,10 @@ package christmas.model;
 import christmas.model.menu.Menu;
 import christmas.utils.Utils;
 
+import java.util.regex.Pattern;
+
 import static christmas.constant.SystemSetting.KOR_COUNTING_UNIT;
+import static christmas.constant.SystemSetting.ORDER_INPUT_REGEX;
 import static christmas.constant.message.ExceptionMessage.INVALID_ORDER_EXCEPTION;
 
 public class Order {
@@ -11,6 +14,7 @@ public class Order {
     private int count;
 
     public Order(String orderData) {
+        validateOrderDataPattern(orderData);
         setMenu(orderData.split("-")[0]);
         setCount(orderData.split("-")[1]);
     }
@@ -44,6 +48,11 @@ public class Order {
     private void setCount(String count) {
         validateCount(count);
         this.count = Utils.parseInt(count);
+    }
+
+    private void validateOrderDataPattern(String orderData) {
+        if (!Pattern.matches(ORDER_INPUT_REGEX, orderData))
+            throw new IllegalArgumentException(INVALID_ORDER_EXCEPTION.getMessage());
     }
 
     private static void validateMenuName(String name) {
