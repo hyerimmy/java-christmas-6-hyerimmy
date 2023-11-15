@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static christmas.constant.SystemSetting.*;
@@ -18,6 +17,7 @@ public class Plan {
     private final LocalDate dateOfVisit;
     private final List<Order> orderList = new ArrayList<>();
     private final List<Benefit> benefitList = new ArrayList<>();
+    private long totalAmount = 0;
 
     public Plan(int day) throws IllegalArgumentException {
         validateDate(day);
@@ -32,10 +32,16 @@ public class Plan {
         }
         validateDuplicateMenu();
         validateNumberOfOrder();
+
+        calculateTotalAmount();
     }
 
     public long getTotalAmount() {
-        return orderList.stream()
+        return totalAmount;
+    }
+
+    private void calculateTotalAmount() {
+        totalAmount = orderList.stream()
                 .mapToLong(Order::getAmount)
                 .sum();
     }
