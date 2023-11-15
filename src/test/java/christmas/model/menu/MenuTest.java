@@ -82,28 +82,6 @@ public class MenuTest {
                 "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림",
                 "제로콜라", "레드와인", "샴페인"
         })
-        @DisplayName("메뉴판에 등록된 메뉴명은 올바른 메뉴이다")
-        void correctMenuName(String menuName) {
-            // given, when, then
-            assertTrue(Menu.isValidMenu(menuName));
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = {
-                "양송이", "타 ", "사이다"
-        })
-        @DisplayName("메뉴판에 등록되지 않은 메뉴명은 메뉴가 아니다")
-        void wrongMenuName(String menuName) {
-            // given, when, then
-            assertFalse(Menu.isValidMenu(menuName));
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = {
-                "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립",
-                "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림",
-                "제로콜라", "레드와인", "샴페인"
-        })
         @DisplayName("메뉴판에 등록된 메뉴명을 입력하면 메뉴 객체가 반환된다")
         void correctMenuNameConvert(String menuName) {
             // given, when, then
